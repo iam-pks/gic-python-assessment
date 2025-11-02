@@ -120,7 +120,10 @@ I understand all parts of this code and can walk through my design decisions and
 
 ## Tests
 
-    Includes a simple pytest (`tests/test_api.py`) that checks if the FastAPI root endpoint returns the expected welcome message.
+    Includes simple pytest cases (`tests/test_api.py`) that verify:
+    - The FastAPI root endpoint (`/`) returns the expected welcome message
+    - The health check endpoint (`/health`) responds with status 200 and `{"status": "ok"}`
+
 
 ## Visualization Output
 
