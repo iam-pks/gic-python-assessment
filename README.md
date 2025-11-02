@@ -124,6 +124,6 @@ I understand all parts of this code and can walk through my design decisions and
 
 ## Visualization Output
 
-    ```
+    
     Running the analysis generates a sample plot file named `rating_distribution.png` in the project root, which shows the rating distribution from the dataset.
 
