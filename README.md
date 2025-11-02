@@ -39,11 +39,9 @@ gic-python-assessment/
    python3 -m venv venv
    source venv/bin/activate
 
-2. Install dependencies:
+2. **Install dependencies**
     ```
     pip install -r requirements.txt
-
-3. **Run the analysis interactively**
 
 3. **Run the analysis interactively**
    ```python
@@ -63,7 +61,7 @@ gic-python-assessment/
    plot_rating_distribution(clean_ratings)
 
 
-4. Start the FastAPI service
+4. **Start the FastAPI service**
    ```
    uvicorn app:app --reload
 
@@ -126,5 +124,6 @@ I understand all parts of this code and can walk through my design decisions and
 
 ## Visualization Output
 
-Running the analysis generates a sample plot file named `rating_distribution.png` in the project root, which shows the rating distribution from the dataset.
+    ```
+    Running the analysis generates a sample plot file named `rating_distribution.png` in the project root, which shows the rating distribution from the dataset.
 
