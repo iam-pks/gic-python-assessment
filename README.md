@@ -43,22 +43,25 @@ gic-python-assessment/
     ```
     pip install -r requirements.txt
 
-3. Run the analysis interactively:
+3. **Run the analysis interactively**
 
-    from data_processor import DataProcessor
-    from movie_analyzer import MovieAnalyzer
-    from data_visualizer import plot_rating_distribution
+3. **Run the analysis interactively**
+   ```python
+   from data_processor import DataProcessor
+   from movie_analyzer import MovieAnalyzer
+   from data_visualizer import plot_rating_distribution
 
-    processor = DataProcessor()
-    ratings = processor.load_data("sample_data/ratings.csv")
-    movies = processor.load_data("sample_data/movies.csv")
+   processor = DataProcessor()
+   ratings = processor.load_data("sample_data/ratings.csv")
+   movies = processor.load_data("sample_data/movies.csv")
 
-    clean_ratings = processor.clean_data(ratings)
-    processor.aggregate_statistics(clean_ratings)
+   clean_ratings = processor.clean_data(ratings)
+   processor.aggregate_statistics(clean_ratings)
 
-    analyzer = MovieAnalyzer()
-    analyzer.get_top_movies(clean_ratings, movies)
-    plot_rating_distribution(clean_ratings)
+   analyzer = MovieAnalyzer()
+   analyzer.get_top_movies(clean_ratings, movies)
+   plot_rating_distribution(clean_ratings)
+
 
 4. Start the FastAPI service
    ```
@@ -120,3 +123,8 @@ I understand all parts of this code and can walk through my design decisions and
 ## Tests
 
     Includes a simple pytest (`tests/test_api.py`) that checks if the FastAPI root endpoint returns the expected welcome message.
+
+## Visualization Output
+
+Running the analysis generates a sample plot file named `rating_distribution.png` in the project root, which shows the rating distribution from the dataset.
+
