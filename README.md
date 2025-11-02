@@ -1,14 +1,19 @@
 # GIC Python Take-Home Assessment
 
-This project performs movie data analysis using Python and pandas, based on the MovieLens dataset format.  
-It demonstrates skills in data cleaning, aggregation, visualization, and modular code organization.
+This project analyses movie data using Python and pandas, following the MovieLens dataset format.
+It focuses on data loading, cleaning, basic statistics, visualization, and a simple API built with FastAPI.
 
 ## Features
-- Load and clean datasets using **pandas**
-- Generate dataset statistics and summary insights
-- Identify top-rated movies by average score
-- Visualize rating distribution using **matplotlib** and **seaborn**
-- Simple FastAPI endpoint for demonstration
+
+Load and clean movie and ratings data using pandas
+
+Generate basic dataset summaries and insights
+
+Find top-rated movies based on average ratings
+
+Visualize rating distribution using matplotlib / seaborn
+
+Expose a small FastAPI endpoint for quick demo access
 
 ## Folder Structure
 
@@ -25,45 +30,93 @@ gic-python-assessment/
 └── ratings.csv
 
 
+---
+
 ## How to Run
 
-1. Create and activate a virtual environment:
+1. **Create and activate a virtual environment**
    ```bash
    python3 -m venv venv
    source venv/bin/activate
 
 2. Install dependencies:
-
-pip install -r requirements.txt
+    ```
+    pip install -r requirements.txt
 
 3. Run the analysis interactively:
 
-python
+    from data_processor import DataProcessor
+    from movie_analyzer import MovieAnalyzer
+    from data_visualizer import plot_rating_distribution
 
-from data_processor import DataProcessor
-from movie_analyzer import MovieAnalyzer
-from data_visualizer import plot_rating_distribution
+    processor = DataProcessor()
+    ratings = processor.load_data("sample_data/ratings.csv")
+    movies = processor.load_data("sample_data/movies.csv")
 
-processor = DataProcessor()
-ratings = processor.load_data("sample_data/ratings.csv")
-movies = processor.load_data("sample_data/movies.csv")
-clean_ratings = processor.clean_data(ratings)
-processor.aggregate_statistics(clean_ratings)
-analyzer = MovieAnalyzer()
-analyzer.get_top_movies(clean_ratings, movies)
-plot_rating_distribution(clean_ratings)
+    clean_ratings = processor.clean_data(ratings)
+    processor.aggregate_statistics(clean_ratings)
 
-4. uvicorn app:app --reload
+    analyzer = MovieAnalyzer()
+    analyzer.get_top_movies(clean_ratings, movies)
+    plot_rating_distribution(clean_ratings)
 
-uvicorn app:app --reload
+4. Start the FastAPI service
+   ```
+   uvicorn app:app --reload
 
-Open your browser at  http://127.0.0.1:8000/
+Then open http://127.0.0.1:8000 in your browser.
 
-Tools & Libraries
+## API Endpoints
 
-Python 3.9+
+    Endpoint	Description
+    /	         Welcome message
 
-pandas, numpy, matplotlib, seaborn
+## Tools & Libraries
 
-fastapi, uvicorn
+    Python 3.9+
 
+    pandas, numpy
+
+    matplotlib, seaborn
+
+    fastapi, uvicorn
+
+Development was done locally on Python 3.7, but the code targets Python 3.9+ as required.
+
+## AI Usage and Documentation
+
+    Tools Used
+
+    ChatGPT – for code review and organizing ideas
+
+    GitHub Copilot – for small function scaffolding
+
+How I Used Them
+
+    I used AI mainly to review structure and sanity-check ideas.
+    All functions were written, tested, and adjusted by me.
+    The AI suggestions were only used to refine clarity and code layout.
+
+## Key Prompts
+
+    Suggest a clean structure for a MovieLens data analysis project using pandas and FastAPI
+
+    Review pandas merge logic and filtering by minimum ratings
+
+    Show an example pytest case for a FastAPI health endpoint
+
+Modifications and My Additions
+
+    Grouped data by (movieId, title) instead of just title to prevent duplicates
+
+    Simplified plots to plain matplotlib for consistency
+
+    Wrote my own docstrings and inline comments
+
+Verified logic manually and through small tests (tests may need Python 3.9+)
+
+I understand all parts of this code and can walk through my design decisions and trade-offs during the discussion
+
+## Tests
+
+    Includes a simple pytest (`tests/test_api.py`) that checks if the FastAPI root endpoint returns the expected welcome message.
